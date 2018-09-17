@@ -1,0 +1,19 @@
+.nav-logo{
+    width: 100px;
+}
+
+.navbar-block{
+    display: block !important;
+}
+
+.navbar-links{
+    float: right;
+}
+
+.guitar-navbar{
+    background-color: #333354 !important;
+}
+
+.guitar-link-text{
+    color: #ffffff !important;
+}

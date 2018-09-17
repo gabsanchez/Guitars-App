@@ -1,0 +1,16 @@
+<div class="row guitars-row">
+  <div class="col-md-4 col-sm-12" *ngFor="let guitar of guitars">
+    <div>
+      <img src="{{guitar.imageUrl}}" alt="{{id}}" class="guitar-image">
+    </div>
+    <div>
+      <h2>Brand: {{guitar.brand}}</h2>
+    </div>
+    <div>
+      <h3>Type: {{guitar.type}}</h3>
+    </div>
+    <div>
+      <p>Owner: {{guitar.owner}}</p>
+    </div>
+  </div>
+</div>
