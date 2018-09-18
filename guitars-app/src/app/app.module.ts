@@ -2,18 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { GuitarComponent } from './guitar/guitar.component';
-import { LoginComponent } from './login/login.component';
+
 import { GuitarsStorageService } from './guitars-storage.service';
+import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GuitarComponent,
-    LoginComponent
+    RoutingComponents
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [GuitarsStorageService],
   bootstrap: [AppComponent]

@@ -8,13 +8,13 @@
     <div class="collapse navbar-collapse navbar-block" id="navbarNav">      
       <ul class="navbar-nav navbar-links">
         <li class="nav-item active">
-          <a class="nav-link guitar-link-text" href="#">Home</a>
+          <a class="nav-link guitar-link-text" routerLink="/home" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link guitar-link-text" href="#">Add guitar</a>
+          <a class="nav-link guitar-link-text" routerLink="/add-guitar">Add guitar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link guitar-link-text" href="#">Register</a>
+          <a class="nav-link guitar-link-text" href="">Register</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0 pull-right">
@@ -24,6 +24,6 @@
     </div>
   </nav>
 <div style="text-align:center">
-  <app-guitar></app-guitar>
+  <router-outlet></router-outlet>
 </div>
 
