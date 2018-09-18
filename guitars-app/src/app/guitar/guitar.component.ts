@@ -14,7 +14,8 @@ export class GuitarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.guitars = this.guitarsService.getData();
+    window.localStorage.setItem('guitarsData', JSON.stringify(this.guitarsService.getData()));
+    this.guitars = JSON.parse(window.localStorage.getItem('guitarsData'));
   }
 
 }
