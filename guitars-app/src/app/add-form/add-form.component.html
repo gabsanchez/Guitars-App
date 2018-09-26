@@ -1,3 +1,23 @@
-<p>
-  add-form works!
-</p>
+<div class="container add-form-container">
+  <form>
+    <div class="form-group">
+      <label for="guitarImage">Image URL:</label>
+      <input name="guitarImage" type="text" class="form-control" id="guitarImage" [(ngModel)]="guitar.imageUrl">
+    </div>
+    <div class="form-group">
+      <label for="guitarBrand">Brand:</label>
+      <input name="guitarBrand" type="text" class="form-control" id="guitarBrand" [(ngModel)]="guitar.brand">
+    </div>
+    <div class="form-group">
+      <label for="guitarType">Type:</label>
+      <input name="guitarType" type="text" class="form-control" id="guitarType" [(ngModel)]="guitar.type">
+    </div>
+    <div class="form-group">
+      <label for="guitarOwner">Owner</label>
+        <input name="guitarOwner" class="form-control" type="text" id="guitarOwner" [(ngModel)]="guitar.owner">    
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary save-button" (click)="saveGuitar()">Save</button>
+    </div>
+  </form>
+</div>

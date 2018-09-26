@@ -1,6 +1,13 @@
 .guitar-image{
-    width: 300px;
+    width: 100%;
 }
-.guitars-row{
-    margin: 10px 0;
+.guitar-card{
+    margin: 15px 5px;
+    padding: 15px;
+}
+.gallery-container{
+    background-color: #8e8e8e;
+}
+.guitar-likes{
+    float: right;
 }

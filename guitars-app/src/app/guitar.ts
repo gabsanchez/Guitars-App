@@ -4,4 +4,5 @@ export class Guitar{
     brand: string;
     type: string;
     owner: string;
+    likes: number;
 }

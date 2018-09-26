@@ -1,16 +1,12 @@
-<div class="row guitars-row">
-  <div class="col-md-4 col-sm-12" *ngFor="let guitar of guitars">
-    <div>
-      <img src="{{guitar.imageUrl}}" alt="{{id}}" class="guitar-image">
-    </div>
-    <div>
-      <h2>Brand: {{guitar.brand}}</h2>
-    </div>
-    <div>
-      <h3>Type: {{guitar.type}}</h3>
-    </div>
-    <div>
-      <p>Owner: {{guitar.owner}}</p>
+<div class="row">
+  <div class="col-md-3 col-sm-12" *ngFor="let guitar of guitars">
+    <div class="guitar-card">
+      <span class="guitar-likes" (click)="like(guitar)">{{guitar.likes}} <i class="far fa-thumbs-up"></i></span>
+      <img src="{{guitar.imageUrl}}" alt="" class="guitar-image">
+      <h1>{{guitar.brand}}</h1>
+      <h3> {{guitar.type}}</h3>
+      <p> {{guitar.owner}}</p>
+      <a routerLink="/edit-guitar/{{guitar.id}}">Edit</a>
     </div>
   </div>
 </div>
