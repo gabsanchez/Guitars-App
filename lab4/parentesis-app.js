@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-app.get('/:entrada', function (req, res) {
+app.get('/parentesis/:entrada', function (req, res) {
     var balanceado = validarParentesis(req.params.entrada);
     res.send(balanceado);
 });
@@ -9,6 +9,8 @@ app.get('/:entrada', function (req, res) {
 app.listen(3000, function () {
   console.log('Escuchando en el puerto 3000!');
 });
+
+
 function validarParentesis(string){
     var parentheses = "[]{}()",
     stack = [],
