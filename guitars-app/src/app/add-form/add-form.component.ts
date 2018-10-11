@@ -20,16 +20,24 @@ export class AddFormComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.guitar = this.id ? this.guitarService.guitarsArray.filter(g => g.id == this.id)[0] : new Guitar();
+    if(this.id){
+      this.guitarService.getData().subscribe(response => this.guitar = (<Array<Guitar>> response).filter(g => g.id == this.id)[0] );
+    }
+    else{
+      this.guitar = new Guitar();
+    }
+    this.guitar = this.id ? this.guitarService.getData().subscribe(response => (<Array<Guitar>> response).filter(g => g.id == this.id)[0] ) : new Guitar;
   }
 
   saveGuitar(){
     if(!this.id){
       this.guitar.id = this.guitarsArray.length;
       this.guitar.likes = 0;
-      this.guitarService.addItem(this.guitar);
+      this.guitarService.addItem(this.guitar).subscribe();
     }
-    window.localStorage.setItem('guitarsData', JSON.stringify(this.guitarService.guitarsArray));
+    else{
+      return this.guitarService.editItem(this.id, this.guitar).subscribe();
+    }
   }
 
 }

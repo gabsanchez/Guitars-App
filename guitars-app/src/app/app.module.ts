@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
 import { GuitarsStorageService } from './guitars-storage.service';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 
@@ -14,7 +15,8 @@ import { AppRoutingModule, RoutingComponents } from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [GuitarsStorageService],
   bootstrap: [AppComponent]

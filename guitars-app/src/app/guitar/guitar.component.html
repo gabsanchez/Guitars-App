@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4 col-sm-12" *ngFor="let guitar of guitars; let guitarIndex = index">
+  <div class="col-md-4 col-sm-12" *ngFor="let guitar of guitars">
     <div class="guitar-card">
       <span class="guitar-likes" (click)="like(guitar)">{{guitar.likes}} <i class="far fa-thumbs-up"></i></span>
       <img src="{{guitar.imageUrl}}" alt="" class="guitar-image">
@@ -7,7 +7,7 @@
       <h3> {{guitar.type}}</h3>
       <p> {{guitar.owner}}</p>
       <a routerLink="/edit-guitar/{{guitar.id}}">Edit</a>
-      <button type="button" class="btn btn-danger delete-button" (click)="deleteGuitar(guitarIndex)">Delete</button>
+      <button type="button" class="btn btn-danger delete-button" (click)="deleteGuitar(guitar.id)">Delete</button>
     </div>
   </div>
 </div>

@@ -14,18 +14,16 @@ export class GuitarComponent implements OnInit {
     ) {  }
 
   ngOnInit() {
-    this.guitars = this.guitarsService.getData();
-    window.localStorage.setItem('guitarsData', JSON.stringify(this.guitars));
+    this.guitarsService.getData().subscribe(response => this.guitars = <Array<Guitar>> response)
+    //window.localStorage.setItem('guitarsData', JSON.stringify(this.guitars));
   }
 
   like(guitar: Guitar){
     guitar.likes += 1;
   }
 
-  deleteGuitar(index){
-    this.guitars.splice(index, 1);
-    this.guitarsService.getData();
-    window.localStorage.setItem('guitarsData', JSON.stringify(this.guitars));
+  deleteGuitar(id){
+    this.guitarsService.deleteItem(id).subscribe(response => this.guitars = <Array<Guitar>> response);
   }
 
 }

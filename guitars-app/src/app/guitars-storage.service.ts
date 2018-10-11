@@ -1,61 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Guitar } from './guitar';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class GuitarsStorageService {
-  guitarsArray : Array<Guitar> = [{
-    id: 1,
-    imageUrl: './assets/img/fender-guitar.jpg',
-    brand: 'Fender',
-    type: 'Electric',
-    owner: 'Gabriel Sanchez',
-    likes: 45
-  },
-  {
-    id: 2,
-    imageUrl: './assets/img/fender-guitar2.jpg',
-    brand: 'Fender',
-    type: 'Electric',
-    owner: 'Pablo Sanchez',
-    likes: 20
-  },
-  {
-    id: 3,
-    imageUrl: './assets/img/fender-guitar3.jpg',
-    brand: 'Fender',
-    type: 'Electric',
-    owner: 'John Smith',
-    likes: 13
-  },
-  {
-    id: 4,
-    imageUrl: './assets/img/fender-guitar4.jpg',
-    brand: 'Fender',
-    type: 'Electric',
-    owner: 'Mateus Assato',
-    likes: 25
-  },
-  {
-    id: 5,
-    imageUrl: './assets/img/taylor-guitar.jpg',
-    brand: 'Taylor',
-    type: 'Acoustic',
-    owner: 'Tobias Raucher',
-    likes: 9
-  },
-  {
-    id: 6,
-    imageUrl: './assets/img/gibson-guitar.jpg',
-    brand: 'Gibson',
-    type: 'Electric',
-    owner: 'Les Paul',
-    likes: 11
-  }];
-  constructor() { }
+  constructor(
+
+    private http: HttpClient
+
+  ) { }
   addItem(item: Guitar){
-    this.guitarsArray.push(item);
+    return this.http.post('http://localhost:3000/guitar/add', item);
   }
-  getData(){    
-    return this.guitarsArray;
+
+  getData(){   
+    return this.http.get('http://localhost:3000/guitars');
+  }
+
+  editItem(id : number, item : Guitar){
+    return this.http.put('http://localhost:3000/guitar/edit/' + id, item);
+  }
+
+  deleteItem(id : number){
+    return this.http.delete('http://localhost:3000/guitar/delete/' + id)
   }
 }
