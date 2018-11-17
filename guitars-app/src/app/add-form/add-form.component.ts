@@ -11,7 +11,7 @@ import { GuitarsStorageService } from '../guitars-storage.service';
 
 
 export class AddFormComponent implements OnInit {
-  id : number = +this.route.snapshot.paramMap.get('id');
+  id : string = this.route.snapshot.paramMap.get('id');
   guitarsArray = new Array<Guitar>();
   guitar = null;
   constructor(
@@ -21,12 +21,11 @@ export class AddFormComponent implements OnInit {
 
   ngOnInit() {
     if(this.id){
-      this.guitarService.getData().subscribe(response => this.guitar = (<Array<Guitar>> response).filter(g => g.id == this.id)[0] );
+      this.guitarService.getItem(this.id).subscribe(response => this.guitar = response );
     }
     else{
       this.guitar = new Guitar();
-    }
-    this.guitar = this.id ? this.guitarService.getData().subscribe(response => (<Array<Guitar>> response).filter(g => g.id == this.id)[0] ) : new Guitar;
+    }    
   }
 
   saveGuitar(){

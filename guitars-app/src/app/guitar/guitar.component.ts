@@ -14,7 +14,8 @@ export class GuitarComponent implements OnInit {
     ) {  }
 
   ngOnInit() {
-    this.guitarsService.getData().subscribe(response => this.guitars = <Array<Guitar>> response)
+    this.guitarsService.getData().subscribe(response => 
+      this.guitars = <Array<Guitar>> response)
     //window.localStorage.setItem('guitarsData', JSON.stringify(this.guitars));
   }
 
@@ -22,8 +23,10 @@ export class GuitarComponent implements OnInit {
     guitar.likes += 1;
   }
 
-  deleteGuitar(id){
-    this.guitarsService.deleteItem(id).subscribe(response => this.guitars = <Array<Guitar>> response);
+  deleteGuitar(id, index){
+    this.guitarsService.deleteItem(id).subscribe(response => {
+      this.guitars.splice(index, 1);
+    });
   }
 
 }

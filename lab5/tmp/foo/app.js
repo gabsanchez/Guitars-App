@@ -3,12 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const MongoClient = require('mongodb').MongoClient
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 var cors = require('cors')
+var db
+MongoClient.connect('mongodb://localhost:27017/guitars',  (err, database) => {
+  // ... start the server
+    if(err) return console.error(err);
+    db = database;
+  })
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -24,58 +32,12 @@ app.use('/users', usersRouter);
 
 app.use(cors());
 
-let guitars = [{
-  id: 1,
-  imageUrl: './assets/img/fender-guitar.jpg',
-  brand: 'Fender',
-  type: 'Electric',
-  owner: 'Gabriel Sanchez',
-  likes: 45
-},
-{
-  id: 2,
-  imageUrl: './assets/img/fender-guitar2.jpg',
-  brand: 'Fender',
-  type: 'Electric',
-  owner: 'Pablo Sanchez',
-  likes: 20
-},
-{
-  id: 3,
-  imageUrl: './assets/img/fender-guitar3.jpg',
-  brand: 'Fender',
-  type: 'Electric',
-  owner: 'John Smith',
-  likes: 13
-},
-{
-  id: 4,
-  imageUrl: './assets/img/fender-guitar4.jpg',
-  brand: 'Fender',
-  type: 'Electric',
-  owner: 'Mateus Assato',
-  likes: 25
-},
-{
-  id: 5,
-  imageUrl: './assets/img/taylor-guitar.jpg',
-  brand: 'Taylor',
-  type: 'Acoustic',
-  owner: 'Tobias Raucher',
-  likes: 9
-},
-{
-  id: 6,
-  imageUrl: './assets/img/gibson-guitar.jpg',
-  brand: 'Gibson',
-  type: 'Electric',
-  owner: 'Les Paul',
-  likes: 11
-}];
+let guitars;
 
-app.get('/guitars', (req, res) => {
-  res.status(200)
-  res.send(guitars);
+app.get('/guitars', (req, res, next) => {
+    var docs = db.collections("instruments").find();
+    res.status(200)
+    res.send(docs)
 })
 
 app.post('/guitar/add', (req, res) => {
